@@ -25,43 +25,84 @@
                 <p>entenda seu câmbio em pesos</p>
             </div>
 
-
-            <a href="#"><img src="img/icon/lua-dark.svg" alt="botão modo dark"></a>
+            <img src="img/icon/lua-dark.svg" alt="botão modo dark">
         </div>
         <form class="formularios">
             <div class="cotacaoWu">
                 <label for="cotacaoWu">Cotação da Western Union:</label>
-                <input type="text" name="" id="cotacaoWu" class="valores" placeholder="escreva...">
+                <input type="number" name="" id="cotacaoWu" class="valores" placeholder="escreva...">
             </div>
 
             <div class="valores_de_troca">
                 <div class="valores_interno">
                     <label for="real">Reais:</label>
-                    <input type="text" name="" id="real" class="valores" placeholder="escreva...">
+                    <input type="number" name="" id="real" class="valores" placeholder="escreva...">
                 </div>
 
                 <img src="img/icon/vai_vem.svg" alt="icone de troca">
 
                 <div class="valores_interno">
                     <label for="peso">Pesos argentino:</label>
-                    <input type="text" name="" id="peso" class="valores" placeholder="escreva...">
+                    <input type="number" name="" id="peso" class="valores" placeholder="escreva...">
                 </div>
             </div>
 
             <div>
-                <input type="button" value="calcular" class="bt bt-calcular">
+                <input type="button" value="calcular" class="bt bt-calcular" id="calcular">
                 <input type="button" value="apagar tudo" class="bt bt-apagar">
             </div>
         </form>
 
-        <div>
+        <div class="tabela">
+            <div class="tabela-valores">
+                <p>Valores em Reais <span><strong>sem</strong></span> <br> taxas e impostos:</p>
+                <p>R$1.200</p>
+            </div>
 
+            <div class="tabela-valores">
+                <p>Você deve receber:</p>
+                <p>$1.200</p>
+            </div>
+
+            <div class="divisor"></div>
+
+            <div class="tabela-valores">
+                <p>Taxa da Western Union:</p>
+                <p>$59</p>
+            </div>
+
+            <div class="tabela-valores">
+                <p>IOF (1,1%):</p>
+                <p>R$1,50</p>
+            </div>
+
+            <div class="tabela-valores">
+                <p>Cotação <span><strong>com</strong></span> taxas <br> e impostos:</p>
+                <p><strong>$60</strong></p>
+            </div>
+
+            <div class="tabela-valores valores-final">
+                <p>Total da transferência </p>
+                <p>R$1.200</p>
+            </div>
+        </div>
+
+        <div class="duvidas">
+            <h3>Porque {coT} se eles falam que é {coST} ?</h3>
+            <p>saiba mais</p>
+
+            <br>
+
+            <h3>O que é IOF ?</h3>
+            <p>saiba mais</p>
         </div>
     </main>
 
     <footer>
         <p>Criado por: <span class="meuNome">Emerson Pereira</span></p>
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 
