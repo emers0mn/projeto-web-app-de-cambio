@@ -9,7 +9,7 @@ peso.addEventListener('input',calcularReal);
 function calcularPeso() {
     
     let resultado =  real.value * cotacaoWu.value;
-    peso.value = resultado.toFixed(4)
+    peso.value = resultado.toFixed(2)
     return console.log(resultado)
 }
 
