@@ -26,31 +26,38 @@ function calcularReal() {
 
 function calculoTotal() {
 
-    valoresFinais[0].innerHTML = "R$" + (peso.value / cotacaoWu.value).toFixed(2);
-    valoresFinais[1].innerHTML = "$" + (real.value * cotacaoWu.value).toFixed(2);
+    var realF = parseInt(real.value)
 
-    valoresFinais[2].innerHTML = "$" + cotacaoWu.value
+    valoresFinais[0].innerHTML = "R$" + real.value;
+    valoresFinais[1].innerHTML = "$" + peso.value;
 
-    let iof = (real.value / 100)*1.1
-    valoresFinais[3].innerHTML = "$" + iof.toFixed(2)
+    var taxaWu = 0
 
-    
-    if (real.value <= 250) {
-        var taxaWu = 9.9; 
-    }else if (real.value <= 500) {
-        var taxaWu = 20;
-    } else {
-        console.log(erro)
+    if (realF <= 250) {
+        taxaWu = 9.9;
+        valoresFinais[2].innerHTML = "R$" + taxaWu 
+    }else if (realF <= 500) {
+        taxaWu = 20;
+        valoresFinais[2].innerHTML = "R$" + taxaWu 
+    } else if (realF <= 1500){
+        taxaWu = 30
+        valoresFinais[2].innerHTML = "R$" + taxaWu 
+    } else if (realF <= 2000) {
+        taxaWu = 50
+        valoresFinais[2].innerHTML = "R$" + taxaWu 
+    } else if (realF > 5000) {
+        taxaWu = 75
+        valoresFinais[2].innerHTML = "R$" + taxaWu 
     }
 
-    taxaWu = 9.9
-
-    console.log(taxaWu)
+    let iof = (realF / 100)*1.1
+    valoresFinais[3].innerHTML = "R$" + iof.toFixed(2)
     
-    let totalTransferencia = (real.value + taxaWu + iof);
+    let totalTransferencia = realF + taxaWu + iof;
 
     let cotacaoFinal = peso.value / totalTransferencia
     valoresFinais[4].innerHTML = "$" + cotacaoFinal.toFixed(3);
 
-    
+    valoresFinais[5].innerHTML = "R$" + totalTransferencia
+
 }
