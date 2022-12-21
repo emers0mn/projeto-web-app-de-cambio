@@ -59,6 +59,10 @@ form {
   border: 1px solid #000;
 }
 
+.valores-finais {
+  font-size: 14px;
+}
+
 .cotacaoWu {
   display: flex;
   flex-direction: column;
