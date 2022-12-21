@@ -60,7 +60,7 @@ form {
 }
 
 .valores-finais {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .cotacaoWu {
@@ -93,7 +93,7 @@ form {
 /*tabela de valores*/
 
 .tabela {
-  padding: 5% 10%;
+  padding: 5% 6%;
   margin: 20px auto;
 
   background: var(--corSecundaria);
