@@ -16,6 +16,6 @@ function calcularPeso() {
 function calcularReal() {
     
     let resultado =  peso.value / cotacaoWu.value;
-    real.value = resultado.toFixed(4)
+    real.value = resultado.toFixed(2)
     return console.log(resultado)
 }
