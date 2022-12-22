@@ -3,6 +3,8 @@ var real = document.getElementById("real");
 var peso = document.getElementById("peso");
 var calculo = document.getElementById("calcular");
 var valoresFinais = document.getElementsByClassName("valores-finais");
+var coT = document.getElementById("coT");
+var coST = document.getElementById("coST");
 
 
 real.addEventListener('input', calcularPeso);
@@ -58,6 +60,8 @@ function calculoTotal() {
     let cotacaoFinal = peso.value / totalTransferencia
     valoresFinais[4].innerHTML = "$" + cotacaoFinal.toFixed(3);
 
-    valoresFinais[5].innerHTML = "R$" + totalTransferencia
+    valoresFinais[5].innerHTML = "R$" + totalTransferencia.toFixed(2)
 
+    coT.innerHTML = "$" + cotacaoFinal.toFixed(3);
+    coST.innerHTML = "$"+ cotacaoWu.value
 }
