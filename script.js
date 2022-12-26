@@ -5,7 +5,8 @@ var calculo = document.getElementById("calcular");
 var valoresFinais = document.getElementsByClassName("valores-finais");
 var coT = document.getElementById("coT");
 var coST = document.getElementById("coST");
-
+var modo = document.getElementById("modo");
+var geral = document.getElementsByClassName("content")[0];
 
 real.addEventListener('input', calcularPeso);
 peso.addEventListener('input',calcularReal);
