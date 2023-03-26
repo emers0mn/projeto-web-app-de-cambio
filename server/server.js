@@ -9,18 +9,22 @@ server.get('/', async (req, res) => {
     const page = await browser.newPage();
 
     await page.goto('https://www.westernunion.com/br/pt/web/send-money/start?ReceiveCountry=AR&ISOCurrency=ARS&SendAmount=1&FundsOut=BA&FundsIn=WUPay', );
-    page.waitForSelector('#smoExchangeRate').outerText
-    const valor = await page.evaluate(() => {
-        return {
-            title: document.querySelector("#smoExchangeRate")
-        };
-    });
+    
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      };
+    
+      await wait(60000);
 
-    console.log('valor:', valor);
+
+    const valor = await page.$('#receiveAmount_1');
+    const innerHTML = await (await valor.getProperty('innerHTML')).jsonValue();
+
+    console.log('valor:', innerHTML);
     await browser.close();
 
     res.send({
-        "Pesos ARS": valor.title
+        "Pesos ARS": innerHTML
     });
 });
 
