@@ -2,29 +2,28 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const server = express();
 
-const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
-
 server.get('/', async (req, res) => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+    let textContent;
 
-    await page.goto('https://www.westernunion.com/br/pt/web/send-money/start?ReceiveCountry=AR&ISOCurrency=ARS&SendAmount=1&FundsOut=BA&FundsIn=WUPay', );
+    try{
+        const browser = await puppeteer.launch( {headless: true} );
+        const page = await browser.newPage();
+        await page.goto('https://p2p.binance.com/pt-BR/trade/sell/USDT?fiat=ARS&payment=MercadoPagoNew', );
+        
+        await page.waitForSelector('.css-1m1f8hn', { timeout: 8000 });
+        
+        const valor = await page.$('.css-1m1f8hn');
+        textContent = await (await valor.getProperty('textContent')).jsonValue();
+        console.log('valor:', textContent); 
+        await browser.close();
     
-    function wait(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      };
-    
-      await wait(60000);
-
-
-    const valor = await page.$('#receiveAmount_1');
-    const innerHTML = await (await valor.getProperty('innerHTML')).jsonValue();
-
-    console.log('valor:', innerHTML);
-    await browser.close();
+    } catch (error){
+        console.error('Erro ao buscar o valor em Pesos ARS', error);
+        textContent = "Não foi possível encontrar o valor correto"
+    }
 
     res.send({
-        "Pesos ARS": innerHTML
+        "Pesos ARS": textContent
     });
 });
 
