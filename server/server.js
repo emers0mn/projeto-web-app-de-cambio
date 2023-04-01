@@ -10,7 +10,7 @@ server.get('/', async (req, res) => {
         const page = await browser.newPage();
         await page.goto('https://p2p.binance.com/pt-BR/trade/sell/USDT?fiat=ARS&payment=MercadoPagoNew', );
         
-        await page.waitForSelector('.css-1m1f8hn', { timeout: 8000 });
+        await page.waitForSelector('.css-1m1f8hn', { timeout: 60000 });
         
         const valor = await page.$('.css-1m1f8hn');
         textContent = await (await valor.getProperty('textContent')).jsonValue();
