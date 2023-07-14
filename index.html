@@ -17,7 +17,7 @@
 
 <body>
 
-    <main > 
+    <main>
 
         <div class="cabecalho">
             <div class="cabecalho-logo">
@@ -49,7 +49,7 @@
 
             <div>
                 <input type="button" value="calcular" class="bt bt-calcular" id="calcular">
-                <input type="button" value="apagar tudo" class="bt bt-apagar">
+                <input type="button" value="apagar tudo" class="bt bt-apagar" id="apagar">
             </div>
         </form>
 
@@ -88,13 +88,24 @@
         </div>
 
         <div class="duvidas">
-            <h3>Porque <span id="coT">{coT}</span> se eles falam que é <span id="coST">{coST}</span> ?</h3>
-            <p>saiba mais</p>
+            <h3 hidden>Por que <span id="coT">{coT}</span> se eles falam que é <span id="coST">{coST}</span> ?</h3>
+            <h3>Esses valores da Western Union estão confusos, está correto?</h3>
+            <p>O Western Union cobra algumas taxas para poder realizar o seu cambio, que são: <br> <br>
+                <strong>Taxas de serviço</strong>: Varia com o cambio <br>
+                <strong>IOF</strong>: 1,1%
+            </p>
+            
 
             <br>
 
             <h3>O que é IOF ?</h3>
-            <p>saiba mais</p>
+            <p>Essa pequena sigla pode causar algumas alterações no valor final da sua conversão de moeda.
+                <br>
+                O IOF é o Imposto sobre Operações Financeiras, um tributo cobrado pelo governo brasileiro em diversas
+                transações financeiras, incluindo câmbio. No caso das conversões de moeda, o IOF é aplicado sobre o
+                valor que você está convertendo, e a taxa atual é de 1,1%.
+            </p>
+            
         </div>
     </main>
 
