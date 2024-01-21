@@ -1,43 +1,82 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
-import Link from 'next/link'
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Api from './_components/lemonDolar';
+
+
 
 export default function Home() {
-  async function getStaticProps() {
-    const response = await fetch("https://criptoya.com/api/lemoncash/usdt/ars/0.1")
-    const data = await response.json()
+
+  const [pesoDolar, setPesoDolar] = useState([])
+  const [realDolar, setRealDolar] = useState([])
+  const [blue, setBlue] = useState([])
+
+    useEffect(() => {
+        const PESO_DOLAR_URL = 'https://criptoya.com/api/lemoncash/usdt/ars/0.1'
+        fetch(PESO_DOLAR_URL)
+        .then((pesoLemon) => {
+            return pesoLemon.json()
+        })
+        .then((resposta) => {
+            
+            setPesoDolar(resposta)
+        })
+    }, [])
+
+    useEffect(() => {
+      const REAL_DOLAR_URL = 'https://criptoya.com/api/binance/usdt/brl/0.1'
+      fetch(REAL_DOLAR_URL)
+      .then((realBinance) => {
+          return realBinance.json()
+      })
+      .then((resposta) => {
+          
+          setRealDolar(resposta)
+      })
+  }, [])
+
+  useEffect(() => {
+    const DOLAR_BLUE_URL = 'https://dolarapi.com/v1/dolares/blue'
+    fetch(DOLAR_BLUE_URL)
+    .then((blue) => {
+        return blue.json()
+    })
+    .then((resposta) => {
+        
+        setBlue(resposta)
+    })
+}, [])
+
+  const cotacaoCard = Math.round(pesoDolar.totalBid / realDolar.totalBid )
+
+  const cotacaoP2P = Math.round(pesoDolar.totalAsk / realDolar.totalAsk )
     
-  
-    return {
-      props: {
-        valores: data.valores
-      }
-    }
-  }
+    
+
+
   return (
     <main className={styles.content}>
-
-      {valores.map((valor, index) =>{
-        return(
-          <div key={index}>
-            <h1>{valor.bid}</h1>
-          </div>
-        )
-      } )}
-
+      
+          
+      
       <div className={styles.valoresContent}>
         <div className={styles.valores}>
           <div>
             <div className={styles.valoresFinais}>
               <h2 className={styles.title2}>Dólar Blue</h2>
-              <p>2000</p>
+              <strong>
+                <p>${blue.venta}</p>
+              </strong>
             </div>
 
           </div>
           <div className={styles.divisor}></div>
           <div className={styles.valoresFinais}>
             <h2>Dólar Cripto</h2>
-            <p>20000</p>
+            <p>${Math.round(pesoDolar.totalBid)}</p>
           </div>
         </div>
         <p className={styles.atualiza}>Última atualização:</p>
@@ -60,7 +99,9 @@ export default function Home() {
                   />
                   <h2 className={styles.title2}>Pesos</h2>
                 </div>
-                <p>2000</p>
+                <strong>
+                  <p>${cotacaoCard}</p>
+                </strong>
               </div>
 
             </div>
@@ -77,7 +118,7 @@ export default function Home() {
                 />
                 <h2 className={styles.title2}>Pesos</h2>
               </div>
-              <p>20000</p>
+              <p>${cotacaoP2P}</p>
             </div>
           </div>
           <p className={styles.atualiza}>Última atualização:</p>
